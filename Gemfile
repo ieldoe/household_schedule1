@@ -73,3 +73,5 @@ gem "sassc-rails"
 gem 'bootstrap', '~> 5.1.3'
 
 gem 'mini_racer'
+
+gem 'devise'
