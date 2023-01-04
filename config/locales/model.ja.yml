@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      # view側： User.model_name.human => "ユーザ" / t("activerecord.models.user")と同じ
+      user: ユーザー
+    # model毎に定義したいattributesを記述
+    attributes:
+      user:
+        id: ID
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 同じパスワード
+  # 全てのmodelで共通して使用するattributesを定義
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日
+  enums:
+    tag:
+      classification:
+        schedule: 予定
+        household_budget: 家計簿

@@ -1,0 +1,24 @@
+<div class= "tag_table">
+<table class="teble">
+  <thead>
+    <tr>
+      <th class="header1">名前</th>
+      <th class="header2"></th>
+      <th class="header3"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @tags.each do |tag| %>
+    <tr>
+      <td><%= tag.name %></td>
+      <td><%= link_to '編集', edit_tag_path(tag.id), class: "tagshowthbtn waves-light waves-effect  btn-small teal-text text-darken-4 button_change_link" %></td>
+      <td><%= button_to '削除', tag_path(tag.id), method: :delete, class: "tagshowthbtn waves-light waves-effect  btn-small teal-text text-darken-4 button_change_link" %></td>
+
+
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+<%= link_to  "作成",  new_tag_path, class: "tagshowbtn waves-light waves-effect  btn-large teal-text text-darken-4" %>
+</div>

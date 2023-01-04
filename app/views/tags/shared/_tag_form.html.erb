@@ -1,0 +1,10 @@
+<%= form_with(model: tag, local: true) do |f| %>
+
+  <div class="input-field">
+    <%= f.label :name%>
+    <%= f.text_field :name%>
+  </div>
+  <div class ='day_btn'>
+    <%= f.submit '登録', class: 'waves-light waves-effect  btn-large teal-text text-darken-4 user_new_btn '%>
+  </div>
+<%end%>
