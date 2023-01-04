@@ -1,0 +1,9 @@
+<%= month_calendar(events: @days)  do |date, days| %>
+  <%= link_to date, day_path(date)  %>
+  <% days.each do |day| %>
+    <div>
+    <%= link_to day.event, edit_day_path(day.id)  %>
+    </div>
+  <% end %>
+<% end %>
+    <%= link_to 'グラフ', search_days_path %>

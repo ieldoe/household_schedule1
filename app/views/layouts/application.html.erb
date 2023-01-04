@@ -10,7 +10,41 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="teal lighten-5">
+  <nav class="teal darken-4">
+  <div class="nav-wrapper ">
+    <div class="brand-logo ">家計簿＋予定表</div>
+      <ul class="right hide-on-med-and-down">
+
+          <%if user_signed_in? == true %>
+            <li>
+              <%= button_to "ログアウト", destroy_user_session_path,  method: :delete , class: "white-text  teal darken-4 button_change_link"  %>
+            </li>
+            <li>
+              <%= link_to "月画面", days_path, class: "white-text  teal darken-4 button_change_link"  %>
+            </li>
+            <li>
+              <%= link_to "予定作成", new_day_path, class: "white-text  teal darken-4 button_change_link"  %>
+            </li>
+            <li>
+              <%= link_to "タグ一覧", tags_path, class: "white-text  teal darken-4 button_change_link"  %>
+            </li>
+
+          <% else %>
+            <li>
+              <%= link_to "ログイン", new_user_session_path %>
+            </li>
+            <li>
+              <%= link_to "新規登録",  new_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to "TOP", root_path %>
+            </li>
+          <% end %>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <%= yield %>
   </body>
 </html>

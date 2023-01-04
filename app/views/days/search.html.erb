@@ -1,0 +1,10 @@
+<h1>ユーザー検索</h1>
+<%= search_form_for @q, url: search_days_path do |f| %>
+  <%= f.label :calender_day_cont, "数値を入力してください" %>
+  <%= f.month_field :calender_day_cont %>
+  <%= f.submit '検索' %>
+<% end %>
+
+<% %>
+
+<%= pie_chart @results.group(:price).count %>

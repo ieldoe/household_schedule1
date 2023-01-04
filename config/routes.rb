@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root to: 'home#index'
+  devise_for :users, controllers: {
+    # ↓ローカルに追加されたコントローラーを参照する(コントローラー名: "コントローラーの参照先")
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :days do
+    collection do
+      get :search
+    end
+  end
+  resources :tags, only: %i[update edit destroy index create new]
 end
