@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :days do
     collection do
       get :search
+      get :graph
     end
   end
   resources :tags, only: %i[update edit destroy index create new]

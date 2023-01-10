@@ -1,5 +1,6 @@
 class DaysController < ApplicationController
   before_action :day_find, only: %i[update edit destroy]
+  before_action :set_q, only: %i[search graph]
 
   def index
     @days = current_user.days.all
@@ -7,12 +8,12 @@ class DaysController < ApplicationController
 
   def show
     @day = current_user.days.all
+    binding.break
     @days = @day.where(calender_day: params[:id])
   end
 
   def new
     @tags = Tag.where(user_id: current_user).or(Tag.where(classification: 'add'))
-
     @day = Day.new
   end
 
@@ -46,22 +47,32 @@ class DaysController < ApplicationController
 
   def destroy
     day = @day.calender_day
-    @day.delete
     redirect_to url: day_path(day)
   end
 
   def search
-    @q = current_user.days.ransack(params[:q].to_s)
-    @results = @q.result
+
+  end
+
+  def graph
+    @results = @q.result(distinct: true)
+    @sum_price = @results.sum(:price)
   end
 
   private
 
   def day_params
-    params.require(:day).permit(:tag_id, :event, :price, :start_time, :e_time)
+    params.require(:day).permit(:tag_id, :event, :price, :start_time, :e_time, :calender_day)
   end
 
   def day_find
     @day = Day.find(params[:id])
   end
+
+  def set_q
+    @q = current_user.days.ransack(params[:q])
+
+
+  end
+
 end
