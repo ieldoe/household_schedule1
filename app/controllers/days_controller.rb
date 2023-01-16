@@ -8,8 +8,9 @@ class DaysController < ApplicationController
 
   def show
     @day = current_user.days.all
-    binding.break
     @days = @day.where(calender_day: params[:id])
+    @calender_day = params[:id]
+
   end
 
   def new

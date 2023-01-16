@@ -10,6 +10,14 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: 同じパスワード
+      day:
+        event: イベント
+        price: 金額
+        start_time: 開始時間
+        e_time: 終了時間
+        tag_id: タグ
+      tag:
+        name: タグ名
   # 全てのmodelで共通して使用するattributesを定義
   attributes:
     created_at: 作成日

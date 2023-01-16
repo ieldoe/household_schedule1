@@ -1,30 +1,32 @@
-<div class= "day_table">
-<table class="teble">
+<h2 class="form_magrin"><%= @calender_day.slice(0..3)%>年<%= @calender_day.slice(5..6) %>月<%= @calender_day.slice(8..9) %>日予定一覧</h2>
+
+<div class="col-7 table_magrin ml-3">
+<table class="table">
   <thead>
     <tr>
-      <th class="header1">イベント</th>
-      <th class="header2">タグ</th>
-      <th class="header3">お金</th>
-      <th class="header4">開始時間</th>
-      <th class="header5">終了時間</th>
-      <th class="header6"></th>
-      <th class="header7"></th>
+      <th scope="col">イベント</th>
+      <th scope="col">タグ</th>
+      <th scope="col">お金</th>
+      <th scope="col">開始時間</th>
+      <th scope="col">終了時間</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead>
-<% @days.each do |day| %>
+  <% @days.each do |day| %>
   <tbody>
     <tr>
       <td><%= day.event %></td>
       <td><%= day.tag.name %></td>
-      <td><%= day.price %></td>
+      <td><%= day.price %>円</td>
       <td><%= day.s_time%></td>
       <td><%=  I18n.l(day.e_time, format: :short )%></td>
-      <td><%= link_to '編集', edit_day_path(day.id), class: " tagshowthbtn waves-light waves-effect  btn-small teal-text text-darken-4 button_change_link " %></td>
-      <td><%= button_to '削除', day_path(day.id), method: :delete, class: " tagshowthbtn waves-light waves-effect  btn-small teal-text text-darken-4 button_change_link " %></td>
+      <td><%= link_to '編集', edit_day_path(day.id), class: "btn btn-primary" %></td>
+      <td><%= link_to '削除', day_path(day.id), data: { turbo_method: :delete}, class: "btn btn-danger" %></td>
     </tr>
   </tbody>
   <% end %>
 </table>
 
-<%= link_to  "作成",  new_day_path, class: "tagshowbtn waves-light waves-effect  btn-large teal-text text-darken-4" %>
+<%= link_to  "予定作成",  new_day_path, class: "text-decoration-none btn btn-warning mt-4 fs-5  d-inline-block form_btn" %>
 </div>
