@@ -1,5 +1,5 @@
 <%= month_calendar(events: @days)  do |date, days| %>
-  <%= link_to date, day_path(date)  %>
+  <%= link_to date, day_path(date), class:"text-decoration-none text-black"  %>
   <% days.each do |day| %>
     <div>
     <%= link_to day.event, edit_day_path(day.id)  %>

@@ -181,3 +181,6 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%H:%M"
     pm: 午後
+  simple_calendar:
+    previous: "前の月"
+    next: "次の月"

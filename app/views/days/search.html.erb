@@ -1,6 +1,9 @@
-<h1>ユーザー検索</h1>
+<h1 class="form_magrin">ユーザー検索</h1>
 <%= search_form_for @q, url: graph_days_path do |f| %>
-  <%= f.label :start_time_during_year, "数値を入力してください" %>
-  <%= f.search_field :start_time_during_year %>
-  <%= f.submit '検索' %>
+  <div class="form-group mb-3 col-sm-7 form_magrin">
+  <%= f.search_field :calender_day_start,  placeholder: "年-月"%>
+  </div>
+  <div class="actions form_magrin">
+  <%= f.submit '検索', class: "btn btn-primary" %>
+  </div>
 <% end %>

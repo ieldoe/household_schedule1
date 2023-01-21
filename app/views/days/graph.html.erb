@@ -1,21 +1,24 @@
-<h1>ユーザー検索</h1>
+<h1 class="form_magrin">年月検索</h1>
 <%= search_form_for @q, url: graph_days_path do |f| %>
-  <%= f.label :calender_day_start, "数値を入力してください" %>
-  <%= f.search_field :calender_day_start %>
-  <%= f.submit '検索' %>
+  <div class="form-group mb-3 col-sm-7 form_magrin">
+  <%= f.search_field :calender_day_start,  placeholder: "年-月" %>
+  </div>
+  <div class="actions form_magrin">
+  <%= f.submit '検索', class: "btn btn-primary" %>
+  </div>
 <% end %>
 
 
-<div class= "day_table">
-<table class="teble">
+<div class="col-7 table_magrin ml-3">
+<table class="table">
   <thead>
     <tr>
-      <th class="header1">日付</th>
-      <th class="header1">イベント</th>
-      <th class="header2">タグ</th>
-      <th class="header3">お金</th>
-      <th class="header4">開始時間</th>
-      <th class="header5">終了時間</th>
+      <th scope="col">日付</th>
+      <th scope="col">イベント</th>
+      <th scope="col">タグ</th>
+      <th scope="col">お金</th>
+      <th scope="col">開始時間</th>
+      <th scope="col">終了時間</th>
     </tr>
   </thead>
   <% @results.each do |day| %>
@@ -24,7 +27,7 @@
       <td><%= day.calender_day %></td>
       <td><%= day.event %></td>
       <td><%= day.tag.name %></td>
-      <td><%= day.price %></td>
+      <td><%= day.price %>円</td>
       <td><%= day.s_time%></td>
       <td><%=  I18n.l(day.e_time, format: :short )%></td>
     </tr>
@@ -32,7 +35,8 @@
   <% end %>
 </table>
 
-
-<%= pie_chart @results.group(:price).count %>
+<%= pie_chart @results.group(:tag_id).sum(:price)%>
+<div class= "graph_form mt-4">
 <p>合計金額</p>
-<%= @sum_price %>
+<p><%= @sum_price %>円</p>
+</div>
